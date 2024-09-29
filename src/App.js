@@ -1,30 +1,61 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
-import Name from './Name';
-import Price from './Price';
-import Description from './Description';
-import Image from './Image';
-import product from './product';
+import "./App.css";
+import styled from "styled-components";
+import Name from './components/Name';
+import Description from './components/Description';
+import Price from './components/Price';
+import Image from './components/Image';
 
-const firstName = ''; // Change this to your name or leave it empty
+// Provide your first name here
+const firstName = 'ibrahim'; // Example: 'John'
 
 function App() {
+  const Container = styled.div`
+    padding: '20px',
+    fontFamily: 'Arial, sans-serif',
+  
+    .cardStyle = {
+    width: '18rem',
+    margin: 'auto',
+    border: '1px solid #ddd',
+    borderRadius: '8px',
+    padding: '20px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    backgroundColor: '#fff'
+  };
+
+  .textStyle = {
+    marginTop: '20px',
+    textAlign: 'center',
+  };
+`;
+const GreetingImage = styled.img`
+  background-color: red;
+  width: 400px;
+  height: 400px;
+  margin-top: 10px;
+`;
+
+
   return (
-    <div className="App">
-      <Card style={{ width: '18rem', margin: '20px auto' }}>
-        <Card.Body>
-          <Image imageUrl={product.image} />
-          <Card.Title><Name name={product.name} /></Card.Title>
-          <Card.Text><Description description={product.description} /></Card.Text>
-          <Price price={product.price} />
-          <Button variant="primary">Buy Now</Button>
-        </Card.Body>
-      </Card>
-      <h2>
-        {firstName ? `Hello, ${firstName}!` : 'Hello, there!'}
-      </h2>
-      {firstName && <img src={product.image} alt="Product" style={{ width: '100px', marginTop: '20px' }} />}
-    </div>
+    <Container>
+      <div className='cardStyle'>
+        <Image />
+        <h2><Name /></h2>
+        <p><Price /></p>
+        <p><Description /></p>
+      </div>
+
+      <div className='textStyle'>
+        <p>Hello, {firstName ? firstName : 'there'}!</p>
+        {firstName && (
+          <GreetingImage 
+            src="https://i8.amplience.net/i/naras/wizkid_MI0005473154-MN0003081520"
+            alt="Greeting"
+          />
+        )}
+      </div>
+    </Container>
   );
 }
 
